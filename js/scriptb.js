@@ -383,7 +383,7 @@ $.fn.addAttr = function(options) {
 	    var offset1=options.offset1;
 	    var offset2=options.offset2;
 
-	    if (ar1===undefined || ar2===undefined || ar 3===undefined ) return;
+	    if (ar1===undefined || ar2===undefined || ar3===undefined ) return;
 		
 	    for (var i=0;i<ar1.length;i++) {
 	        
