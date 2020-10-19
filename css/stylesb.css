@@ -1,0 +1,301 @@
+body {
+    background-color: #333;
+}
+
+* {
+    font-family: Times;
+    color: lightblue;
+    font-size:13px;
+}
+
+input,select {
+    background-color: #222;
+    border:1px solid #555;
+    padding:2px 10px;
+    font-size:13px;
+}
+input[type="text"] {
+    width:3em;
+}
+label {
+    font-size:12px;
+}
+label input {
+    margin-left:5px;
+    margin-right:10px;
+}
+
+label.stroke input {
+    background-color: #777;
+
+}
+
+g {
+    stroke: white;
+    fill: white;
+    fill-opacity: .2;
+}
+
+.default:hover {
+    stroke: white;
+    fill: white;
+    fill-opacity: .8;
+}
+
+.sample { 
+    display:inline-block;
+    margin-left:20px;
+    padding:3px;
+}
+.stroke_red {
+    border:1px solid red;
+    color:red;
+    stroke:red;
+}
+.stroke_none {
+    border:0px solid red;
+    color:#CCC;
+    stroke:none;
+}
+.stroke_blue {
+    border:1px solid blue;
+    color:blue;
+    stroke:blue;
+}
+.stroke_yellow {
+    border:1px solid yellow;
+    color:yellow;
+    stroke:yellow;
+}
+
+label.fill input {
+    border:1px solid #CCC;    
+    color:#777;
+}
+.fill_none {
+    background-color: rgba(0,0,0,0);
+    fill:none;
+}
+
+.fill_red {
+    background-color: red;
+    fill:red;
+}
+.fill_blue {
+ background-color: blue;
+ fill:blue;
+}
+.fill_yellow {
+    background-color: yellow;
+    fill:yellow;
+}
+
+.defaultAction { 
+    border-left:2px solid #999;
+    border-top:2px solid #999;
+}
+#menuOptions {
+    background-color: rgba(255, 255, 255, .1);
+    padding: 2px 10px;
+    position: relative;
+    height:30px;
+}
+
+#menuOptionsList {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    }
+.defaultAction {
+    
+}
+#menuOptionsList div {
+    float: left;
+    padding: 2px 10px;
+    margin:2px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    cursor: pointer;
+}
+#menuOptionsList div:hover {
+    background-color:  rgba(255, 255, 255, .2);
+} 
+span.underline {
+    text-decoration: underline;
+}
+#status, #mode {
+    right: 10px;
+    position: absolute;
+}
+
+#monitor {
+    width: 100%;
+    background-color: rgba(255, 255, 255, .2);
+    height: 30px;
+    max-height: 30px;
+    position: relative;
+}
+
+#menu {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#svgContainer {
+    width: 100%;
+}
+
+svg {
+    margin: 10px auto;
+    display: block;
+    background-color: #212;
+}
+
+/* prettify overrides */
+ol.linenums li, ol.linenums li * {
+    background: #888 !important;
+    font-family: Courier !important;
+}
+
+code.prettyprint * {
+    font-family: Courier !important;
+    background: none !important;
+}
+
+code.prettyprint span.pln {
+    color: white !important;
+}
+
+pre.prettyprint {
+    padding: 10px !important;
+    border: 0px !important;
+    border-left: 1px solid #888 !important;
+}
+
+
+.grouped {
+    stroke: white;
+    fill: white;
+    fill-opacity: .2;
+       stroke-opacity: .2;
+}
+
+.grouped:hover {
+    stroke: white;
+    fill: white;
+    fill-opacity: .8;
+}
+.helper {
+    fill:none;
+    stroke:none;
+}
+.highlighted circle {
+    stroke: white;
+    fill: yellow;
+    fill-opacity: .5;
+}
+.highlighted line {
+    stroke-width:3;
+    stroke:white !important;    
+}
+
+.light1 {
+    stroke: white;
+    opacity: .2;
+}
+
+.light2 {
+    stroke: white;
+    opacity: .4;
+}
+
+.thin_grey {
+    stroke-width: 1;
+    stroke: #DDD;
+    fill: none;
+}
+
+.yellow {
+    stroke: yellow;
+    fill: none;
+}
+
+.black {
+    stroke: #333;
+}
+
+.black_solid {
+    stroke: #333;
+    fill: #000;
+}
+
+.white_none {
+    stroke: white;
+    fill: white;
+}
+
+.red {
+    stroke: red;
+    fill: none;
+}
+
+.blue {
+    stroke: blue;
+    fill: none;
+}
+
+.red_solid {
+    stroke: red;
+    fill: pink;
+}
+
+.yellow {
+    stroke: yellow;
+}
+
+#svg1 {
+    zoom: 1;
+}
+
+#svg2 {
+    zoom: 1;
+}
+
+#svg3 {
+    zoom: 1;
+}
+
+#svg4 {
+    zoom: 1;
+}
+
+#svg5 {
+    zoom: 1;
+}
+
+.green {
+    fill: red;
+    stroke: green;
+}
+
+.text {
+    fill: #AAA;
+    font-size: 10px;
+}
+
+.dark_blue {
+    fill: darkblue;
+}
+
+.light_blue {
+    fill: lightblue;
+}
+
+
+

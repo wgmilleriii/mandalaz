@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>artsie</title>
+    <link rel="stylesheet" href="css/stylesa.css" />
+    <script src="js/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="js/drawlib.js"></script>
+    <script src="js/tutorial.js"></script>
+
+  </head>
+
+  <body>
+
+<h1>Mandala library</h1>
+<h2>An extension of drawlib.js</h2>
+<hr>
+<div>
+Let's work smarter, not harder.
+</div>
+<div>
+Mandalas are constructed on an SVG object. There can be multiuple SVG objects per page (like this one). To get started, assign a variable to reference the object on which to draw. Here, we'll begin drawing on the SVG object with the identifier 
+<code class="prettyprint">id="svg0"</code>
+and draw a grid.
+</div>
+
+<pre class="prettyprint lang-js linenums"  >
+    
+    s=document.getElementById("svg0");
+    s.grid(100,20);
+   
+
+</pre>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg0" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+<div>Next, we'l create a group with <code class="prettyprint">g=s.makeGroup()</code>, and add two circles to the group. Mandala-ing is as simple as calling <code class="prettyprint">g.mandala(6);</code>
+
+<pre class="prettyprint lang-js linenums"  >
+    
+    s=document.getElementById("svg0");
+    s.grid(100,20);
+    
+    g=s.makeGroup();
+    g.circle(0,100,5,"thin_grey");
+    g.circle(0,100,20,"thin_grey");
+    g.mandala(6);
+
+
+</pre>
+
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg1" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+
+<div>The <code class="prettyprint">g.mandala(6)</code> code takes two parameters: the number of points, and an offset. Here's a new group with a path, and an offset of .5:
+
+<pre class="prettyprint lang-js linenums"  >
+    
+    g=s.makeGroup();
+    g.circle(0,100,5,"thin_grey");
+    g.circle(0,100,20,"thin_grey");
+    g.mandala(6);
+
+    g=s.makeGroup();
+    g.circle(0,100,10,"thin_grey");
+    g.mandala(6, .5);
+
+    g=s.makeGroup();
+    p=g.path();
+    p.setPath("M 100 100 Q 120 120 140 100");
+    g.mandala(16);
+
+</pre>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg2" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 
+  height=600 id="svg3" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg4" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg5" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg6" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg7" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+  </svg>
+
+  <svg transform="scale(1, -1)"  width=800 height=600 id="svg8" viewBox="-400 -300 800 600"  >
+  <defs id="defs0">
+  </defs>
+   <image href="imgs/4.png" height="400" 
+   width="400" x="-200" y="-200"/>
+  </svg>
+    
+
+  </body>
+
+  
+</html>

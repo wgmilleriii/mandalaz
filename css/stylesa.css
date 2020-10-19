@@ -1,0 +1,95 @@
+body { 
+    background-color:#333; 
+    padding:50px;
+}
+* { 
+    font-family:Times; 
+    color:lightblue;
+}
+svg { 
+    margin:10px;
+    background-color:#212;
+}
+
+/* prettify overrides */
+ol.linenums li, ol.linenums li * { 
+    background: #888 !important ;
+    font-family:Courier !important;
+}
+code.prettyprint * {
+ font-family:Courier !important; 
+ background: none !important ;  
+}
+code.prettyprint span.pln {  color:white !important;}
+pre.prettyprint {
+    padding: 10px !important;
+    border:0px !important;
+    border-left: 1px solid #888 !important;
+}
+
+.default { 
+stroke:red
+; }
+.thin_grey {
+    stroke-width:1;
+    stroke:#DDD;
+    fill:none;
+}
+.yellow { 
+    stroke:yellow;
+    fill:none;
+ }
+
+.black { 
+    stroke:#333;
+    
+ }
+.black_solid { 
+    stroke:#333;
+    fill:#000;
+ }
+.white_none { 
+stroke:white;
+fill:white; }
+.red { 
+    stroke:red;
+    fill:none;
+ }
+.blue { 
+    stroke:blue;
+    fill:none;
+ }
+.red_solid { 
+    stroke:red;
+    fill:pink;
+ }
+.yellow {
+    stroke:yellow;
+}
+ #svg1 {
+    zoom:1;
+ }
+ #svg2 {
+    zoom:1;
+ }
+ #svg3 {
+    zoom:1;
+ }
+ #svg4 {
+    zoom:1;
+ }
+ #svg5 {
+    zoom:1;
+ }
+.green { 
+    fill:red;
+    stroke:green;
+ }
+ .text { fill:#AAA; 
+font-size:10px;
+ }
+ .dark_blue { 
+ fill:darkblue; }
+
+ .light_blue { 
+ fill:lightblue; }

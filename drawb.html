@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>artsie</title>
+    <link rel="stylesheet" href="css/stylesb.css" />
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/drawlib2.js"></script>
+    <script src="js/scriptb.js"></script>
+  </head>
+  <body>
+    <div id="menuOptions">
+      <div id="mode">Welcome.
+      </div>      
+      <div id="menuOptionsList">
+          <div link="makeCircle"><span class=underline>C</span>ircle</div>
+          <div link="makeGrid"><span class=underline>G</span>rid</div>
+          <div link="makeMPoints"><span class=underline>P</span>oints</div>
+          <div link="makeMLines"><span class=underline>L</span>ines</div>
+          <div link="makeMCurves">Cur<span class=underline>v</span>es</div>
+          <div link="makeClasses">Cl<span class=underline>a</span>sses</div>
+          <div link="makeUndo"><span class=underline>U</span>ndo</div>
+        </div>
+      </div>
+    <div id="monitor">
+      <div id="status">
+      </div>
+      <div id="menu">
+        <div id="makeClasses" class="submenu">
+
+          <label class="stroke">Stroke: 
+            <input type="button" value="None" class="stroke_none" />
+            <input type="button" value="Red" class="stroke_red" />
+            <input type="button" value="Blue" class="stroke_blue" />
+            <input type="button" value="Yellow" class="stroke_yellow" />
+          </label>
+          <label class="fill">Fill: 
+            <input type="button" value="None" class="fill_none" />
+            <input type="button" value="Red" class="fill_red" />
+            <input type="button" value="Blue" class="fill_blue" />
+            <input type="button" value="Yellow" class="fill_yellow" />
+          </label>
+
+          <div class="sample">Sample</div>
+        </div>
+        
+
+        <div id="makeMLines" class="submenu hasSels">
+          <select class="selLine"></select>
+          <select class="selLine"></select>
+          <label>Offset: <input type="text" id="lineOffset" value="0"></label>
+          <input type="button" value="Lines" class="defaultAction" id="btnDrawMLines" />
+          <input type="button" value="Circles" id="btnDrawMCircles" />
+          <input type="button" value="Circle Row" id="btnDrawMCircleRow" />
+        </div>
+        <div id="makeMCurves" class="submenu hasSels">
+          <select class="selLine"></select>
+          <select class="selLine"></select>
+          <select class="selLine"></select>
+          <label>Offset 1: <input type="text" id="lineOffset1" value="1"></label>
+          <label>Offset 2: <input type="text" id="lineOffset2" value="2"></label>
+          <input type="button" value="Curves" class="defaultAction" id="btnDrawMCurves" />
+          
+          
+        </div>
+
+        <div id="makeMPoints" class="submenu">
+          <label>Points:<input type="text" id="mPoints" value="12" /></label>
+          <label>Offset:<input type="text" id="mOffset" value="0" /></label>
+          <input type="button" value="Make Points" class="defaultAction" id="btnMakePoints" />
+        </div>
+        <div id="makeGrid" class="submenu">
+          <label>Big:<input type="text" id="mGridBig" value="100" /></label>
+          <label>Small:<input type="text" id="mGridSmall" value="20" /></label>
+          <input type="button" value="Make Grid" class="defaultAction" id="btnMakeGrid" />
+        </div>
+        <div id="makeCircle" class="submenu">
+          Click to place the circle.
+        </div>
+        <div id="makeCircle2" class="submenu">
+          Click again to set the circle radius.
+        </div>
+      </div>
+    </div>
+    <div id="svgContainer">
+      <svg transform="scale(1, -1)"  width=800 height=600 id="svgb" viewBox="-400 -300 800 600"  >
+        <defs id="defs0">
+        </defs>
+      </svg>
+    </div>
+  </body>
+  
+</html>
