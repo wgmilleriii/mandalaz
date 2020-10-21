@@ -35,7 +35,22 @@ g {
     fill: white;
     fill-opacity: .2;
 }
+input[type="number"] {
+    width:3em;
+}
+.submenu {
+    vertical-align: middle;
+    display: table-cell;
+}
+.svgCont { 
+  vertical-align: middle;
+    display:inline-block; 
+  }
+.svgCont svg { 
+margin:0px 0px 2px;
+padding:0px;
 
+}
 .default:hover {
     stroke: white;
     fill: white;
@@ -93,6 +108,7 @@ label.fill input {
 .defaultAction { 
     border-left:2px solid #999;
     border-top:2px solid #999;
+    margin-left:40px;
 }
 #menuOptions {
     background-color: rgba(255, 255, 255, .1);
