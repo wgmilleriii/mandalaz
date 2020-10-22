@@ -732,9 +732,13 @@ $.fn.mCircleRow = function(options) {
 	
  		var n=settings.num;
  		var offset=settings.offset;
- 		var rad=settings.rad*nextRadiusRatio;
- 		nextRadiusRatio*=.8;
- 		if (nextRadiusRatio<.3) nextRadiusRatio=1;
+ 		
+
+ 		// var rad=settings.rad*nextRadiusRatio;
+ 		// nextRadiusRatio*=.8;
+ 		// if (nextRadiusRatio<.3) nextRadiusRatio=1;
+
+		var rad=$("#mRadius").val();
 	    var p, p2, ar, d;
 	    p2=Math.PI*2 ;
 	    ar=[];
