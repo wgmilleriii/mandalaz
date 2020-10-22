@@ -4,7 +4,10 @@
     <title>artsie</title>
     <link rel="stylesheet" href="css/stylesb.css" />
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/svgs.js"></script>
     <script src="js/drawlib2.js"></script>
+
+
     <script src="js/scriptb.js"></script>
   </head>
   <body>
@@ -12,7 +15,8 @@
       <div id="mode">Welcome!
       </div>      
       <div id="menuOptionsList">
-          <div link="makeCircle"><span class=underline>C</span>ircle</div>
+
+          <div link="makeCircle" action="beginCircle"><span class=underline>C</span>ircle</div>
           <div link="makeGrid"><span class=underline>G</span>rid</div>
           <div link="makeMPoints"><span class=underline>P</span>oints</div>
           <div link="makeMLines"><span class=underline>L</span>ines</div>
@@ -47,7 +51,8 @@
         <div id="makeMLines" class="submenu hasSels">
           <select class="selLine"></select>
           <select class="selLine"></select>
-          <label>Offset: <input type="text" id="lineOffset" value="0"></label>
+          <label>Offset: <input type="number" id="lineOffset" value="0"></label>
+          <label><input type="checkbox" class=reverse>Reverse</label>
           <input type="button" value="Lines" class="defaultAction" id="btnDrawMLines" />
           <input type="button" value="Circles" id="btnDrawMCircles" />
           <input type="button" value="Circle Row" id="btnDrawMCircleRow" />
@@ -56,8 +61,10 @@
           <select class="selLine"></select>
           <select class="selLine"></select>
           <select class="selLine"></select>
-          <label>Offset 1: <input type="text" id="lineOffset1" value="1"></label>
-          <label>Offset 2: <input type="text" id="lineOffset2" value="2"></label>
+          <label>Offset 1: <input type="number" id="lineOffset1" value="1"></label>
+          <label><input type="checkbox" class=reverse>Reverse</label>
+          <label>Offset 2: <input type="number" id="lineOffset2" value="2"></label>
+          <label><input type="checkbox" class=reverse>Reverse</label>
           <input type="button" value="Curves" class="defaultAction" id="btnDrawMCurves" />
           
           
@@ -65,7 +72,8 @@
 
         <div id="makeMPoints" class="submenu">
           <label>Points:<input type="text" id="mPoints" value="12" /></label>
-          <label>Offset:<input type="text" id="mOffset" value="0" /></label>
+          <label>Offset:<input type="number" id="mOffset" value="0" /></label>
+          <label><input type="checkbox" class=reverse>Reverse</label>
           <input type="button" value="Make Points" class="defaultAction" id="btnMakePoints" />
         </div>
         <div id="makeGrid" class="submenu">

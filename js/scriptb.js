@@ -14,7 +14,20 @@ $( document ).ready(function() {
 	svg=$("#svgb");
 	svgNS="http://www.w3.org/2000/svg";
 	hideMenus();
+	$(".reverse").parent().each(function() {
+		console.log($(this));
+		var d=document.createElement('div'); //Create a path in SVG's namespace
+				d=$(d);
 
+			d.html(svg_reverse);
+
+
+		d.attr("class","svgCont reverse");
+		 $(this).replaceWith(d);
+		// d.insertBefore($(this));
+		// console.log($(this));
+	});
+	$(document).focus();
 });
 
 function setMode(s) {
@@ -22,13 +35,40 @@ function setMode(s) {
 	$("#mode").html(s);
 }
 
-$(document).on('click', "#menuOptionsList div", function () {
+$(document).on('click', ".reverse", function () {
+	
+	var o=$(this);
+
+	var p=o.prev().find("input[type=number]");
+	var v=p.val();
+	if (!$.isNumeric(v)) v=0;
+	if (v==0) {
+		v=-1;
+	} else {
+		v*=-1;
+	}
+	p.val(v);
+
+});
+
+
+$(document).on('click', "#menuOptionsList div", function (event) {
 	
 	var o=$(this);
 	var a=o.attr("link");
+	var f=o.attr("action");
 	console.log(a);
 	console.log(o);
 	showMenu(a);
+	if (f!==undefined) {
+		var fn = window[f];
+		// is object a function?
+		if (typeof fn === "function") {
+			fn.apply();
+			event.stopPropagation();
+		}
+
+	}
 
 });
 
@@ -52,6 +92,7 @@ $(document).on('click', svg, function (e) {
     		break;
     	case "pointResize":
     		setMode("");
+    		setStatus("");
     		activeGroup.attr("radius",groupRadius);
     		// console.log(arPoints);
 
@@ -90,7 +131,7 @@ $(document).on('click', ".grouped", function (event) {
 
 $(document).on('mouseenter', "g[pointindex]", function (evt) {
     var p=$(this);
-    setStatus("Group " + p.attr("pointindex"));
+    setStatus("Group " + p.attr("pointindex") + ". Click again to move group.");
     $(this).addAttr({p:"class",v:"highlighted"});
 });
 $(document).on('mouseleave', "g[groupindex]", function (evt) {
@@ -165,20 +206,26 @@ $(document).on('click', '#btnMakePoints', function () {
 $(document).on('keyup keydown', function(e){
 	pressed = e.shiftKey;
 } );
-
+function doReverse(i) {
+	r=$(".reverse:visible:eq(" + i + ")");
+	r.click();
+}
 $(document).on('keypress', '', function (e) {
     console.log(e.key);
 
       switch (e.key) {
+      	case "r":
+      		doReverse(0);
+      		return;
+      	case "R":
+      		doReverse(1);
+      		return;
     	case "Enter":
     		console.log("!!!");
     		$(".defaultAction:visible").click();
     		return;
     	case "c" : 
-	    	showMenu("makeCircle");
-	    	var g=svg.makeGroup();
-	    	c=g.circle({cx:0 , cy:0, r:10});
-	    	setMode("circle");
+    		beginCircle();
 	    	break;
     	case "g" : 
 	    	showMenu("makeGrid");
@@ -292,6 +339,11 @@ function setStatus(s) {
 	$("#status").html(s);
 }
 function beginCircle() {
+	    	showMenu("makeCircle");
+	    	var g=svg.makeGroup();
+	    	c=g.circle({cx:0 , cy:0, r:10});
+	    	setMode("circle");
+
 	setStatus("Set circle center");
 }
 function updateSels(e) {
