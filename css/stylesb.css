@@ -29,7 +29,22 @@ label.stroke input {
     background-color: #777;
 
 }
-
+#history {
+    width:200px;
+    position:absolute;
+    top:30px;
+    right:10px;
+    border:1px solid #555;
+    background-color: rgba(0,0,0,.8);
+    z-index:999;
+    text-indent: -20px;
+    padding-left:30px;
+}
+#history p {
+    font-family: Courier;
+    color:lightblue;
+    
+}
 g {
     stroke: white;
     fill: white;
