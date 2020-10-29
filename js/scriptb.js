@@ -57,7 +57,7 @@ $(document).ready(function() {
     // bring the keyboard focus to the document window
     $(document).focus();
 
-    makeTri();
+    // makeTri();
 });
 
 
@@ -105,7 +105,7 @@ function sierpinski(Ax,Ay,Bx,By,Cx,Cy,d,g) {
 
         var pat=g.path();
         var params="M {0} {1} L {2} {3} L {4} {5} z".format(Ax, Ay, Bx, By, Cx, Cy);
-        console.log(params);
+        // console.log(params);
         pat.setPath(params);
     }
 }
@@ -176,7 +176,25 @@ function beginCircle() {
     setMode("circle");
     setStatus("Set circle center");
 }
+function addCircle(g) {
+    return  g.circle({
+        cx: 0,
+        cy: 0,
+        r: 10
+    });
+}
+var fracGroup;
+var fracPoints=[];
+function beginFractal() {
 
+    showMenu("makeFractal");
+    fracPoints=[];
+    fracGroup = svg.makeGroup();
+    c = addCircle(fracGroup);
+    fracPoints.push(c);
+    setMode("frac1");
+    setStatus("Set first point.");
+}
 
 function updateSels(e) {
 
@@ -276,6 +294,34 @@ function createHistory(s) {
 
 $(document).on('click', svg, function(e) {
     switch (mode) {
+        case "frac1":
+            showMenu("makeFractal2");
+            c = addCircle(fracGroup);
+            fracPoints.push(c);
+            setMode("frac2");
+            break;
+        case "frac2":
+            showMenu("makeFractal3");
+            c = addCircle(fracGroup);
+            fracPoints.push(c);
+            setMode("frac3");
+            break;
+        case "frac3":
+            showMenu("makeFractal4");
+            var pat=fracGroup.path();
+            var Ax=fracPoints[0].getAttribute("cx");
+            var Ay=fracPoints[0].getAttribute("cy");
+            var Bx=fracPoints[1].getAttribute("cx");
+            var By=fracPoints[1].getAttribute("cy");
+            var Cx=fracPoints[2].getAttribute("cx");
+            var Cy=fracPoints[2].getAttribute("cy");
+            var params="M {0} {1} Q {2} {3}  {4} {5} z".format(Ax, Ay, Bx, By, Cx, Cy);
+            // console.log(params);
+            pat.setPath(params);
+
+            setMode("frac4");
+            break;
+
         case "circle":
             setMode("circle2");
             showMenu("makeCircle2");
@@ -349,7 +395,7 @@ $(document).on('mousemove', svg, function(evt) {
     y = (y - svgHeight / 2) * -1;
 
     // set the coordinates of the global circle
-    if (mode == "circle") {
+    if (mode == "circle" || mode=="frac1" || mode=="frac2" || mode=="frac3") {
         c.setAttribute("cx", x);
         c.setAttribute("cy", y);
     }
@@ -411,6 +457,18 @@ $(document).on('mousemove', svg, function(evt) {
 
 });
 
+$(document).on('click', '#btnMakeFractal', function() {
+    var p = $("#mFracPoints").val();
+    svg.makeFractal({
+        ar:fracPoints,
+        level:4,
+        p:p
+
+    });
+
+});
+
+
 $(document).on('click', '#btnMakePoints', function() {
     var p = $("#mPoints").val();
     var o = $("#mOffset").val();
@@ -445,6 +503,9 @@ $(document).on('keypress', '', function(e) {
             return;
         case "c":
             beginCircle();
+            break;
+        case "f":
+            beginFractal();
             break;
         case "g":
             showMenu("makeGrid");
@@ -875,13 +936,13 @@ $(document).on('click', '#btnDrawMCurves', function() {
         };
 
         jQuery.extend(settings, options);
-        console.log($(this));
-        console.log("PATHIN");
-        console.log(settings);
+        // console.log($(this));
+        // console.log("PATHIN");
+        // console.log(settings);
         var ar = options.ar;
         var path = document.createElementNS(svgNS, 'path'); //Create a path in SVG's namespace
         path.setAttribute("class", settings.css);
-        console.log("oathing2");
+        // console.log("oathing2");
         if (ar !== undefined && ar.length > 0) {
             var s = "M";
             for (var i = 0; i < ar.length; i += 2) {
@@ -891,7 +952,7 @@ $(document).on('click', '#btnDrawMCurves', function() {
             path.setAttribute("d", s);
         }
         path = $(path);
-        console.log(path);
+        // console.log(path);
         $(this).append(path);
         return path;
     }
@@ -924,7 +985,73 @@ $(document).on('click', '#btnDrawMCurves', function() {
         $(this).append(line);
     }
 
+    $.fn.makeFractal2 = function(options) {
+    }
+    $.fn.makeFractal = function(options) {
+        ar=options.ar;
+        level=options.level;
+        n=options.p;
 
+
+        var X1=ar[0].getAttribute("cx");
+        var Y1=ar[0].getAttribute("cy");
+        var X2=ar[1].getAttribute("cx");
+        var Y2=ar[1].getAttribute("cy");
+        var X3=ar[2].getAttribute("cx");
+        var Y3=ar[2].getAttribute("cy");
+        var rad1 = distancebetween(0,0,X1,Y1);
+        var rad2 = distancebetween(0,0,X2,Y2);
+        var rad3 = distancebetween(0,0,X3,Y3);
+
+        var angr1 = Math.atan2(Y1, X1);
+        var angr2 = Math.atan2(Y2, X2);
+        var angr3 = Math.atan2(Y3, X3);
+
+        var ang1 = Math.atan2(Y1, X1) * 180 / Math.PI;
+        var ang2 = Math.atan2(Y2, X2) * 180 / Math.PI;
+        var ang3 = Math.atan2(Y3, X3) * 180 / Math.PI;
+
+        createHistory(`svg.makeFractal({
+           {0} {1} {2}
+        });`.format(ang1, ang2, ang3));
+
+
+
+        var p, p2, ar, d;
+        p2 = Math.PI * 2;
+        ar = [];
+        var g = this.makeGroup();
+
+
+        // console.log("((((");
+        // for (var i=0;i<=p2*1.05;i+=p2/n) {
+        for (var i = 0; i < n; i++) {
+            //d=i+p2/offset/n;
+            d = (i / n) * p2 ;
+
+            var x1, y1, x2, y2, x3, y3;
+            x1=Math.cos(angr1 + d) * rad1 ;
+            y1=Math.sin(angr1 + d) * rad1 ;
+            x2=Math.cos(angr2 + d) * rad2 ;
+            y2=Math.sin(angr2 + d) * rad2 ;
+            x3=Math.cos(angr3 + d) * rad3 ;
+            y3=Math.sin(angr3 + d) * rad3 ;
+
+            var pa=g.path();
+            var params="M {0} {1} Q {2} {3} {4} {5} z".format(x1, y1, x2, y2, x3, y3);
+            console.log(params);
+            pa.setPath(params) ;
+
+         
+            // // // console.log(x,y);
+        }
+        g.attr("pointindex", arPoints.length);
+        arPoints.push(ar);
+
+        // line(x1,y1,x2,y2,css,opacity);
+        return this;
+
+    }
     $.fn.makeMPoints = function(options) {
 
         var settings = {
@@ -945,11 +1072,11 @@ $(document).on('click', '#btnDrawMCurves', function() {
 
         var rad = $("#mRadius").val();
 
-    createHistory(`svg.makeMPoints({
-        num: {0},
-        offset: {1},
-        rad: {2}
-    });`.format(n,offset,rad));
+        createHistory(`svg.makeMPoints({
+            num: {0},
+            offset: {1},
+            rad: {2}
+        });`.format(n,offset,rad));
 
 
         var p, p2, ar, d;
@@ -1245,4 +1372,7 @@ if (!String.prototype.format) {
                 match;
         });
     };
+}
+function calcAngleDegrees(x, y) {
+  return Math.atan2(y, x) * 180 / Math.PI;
 }

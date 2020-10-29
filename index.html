@@ -22,6 +22,7 @@
           <div link="makeMPoints"><span class=underline>P</span>oints</div>
           <div link="makeMLines"><span class=underline>L</span>ines</div>
           <div link="makeMCurves">Cur<span class=underline>v</span>es</div>
+          <div link="makeFractal" action="beginFractal"><span class=underline>F</span>ractals</div>
           <div link="makeClasses">Cl<span class=underline>a</span>sses</div>
           <div link="makeUndo"><span class=underline>U</span>ndo</div>
           <div action="viewHistory"><span class=underline>H</span>istory</div>
@@ -91,6 +92,22 @@
         <div id="makeCircle2" class="submenu">
           Click again to set the circle radius.
         </div>
+
+        <div id="makeFractal" class="submenu">
+          Click to place the first point.
+        </div>
+        <div id="makeFractal2" class="submenu">
+          Click to place the control point.
+        </div>
+        <div id="makeFractal3" class="submenu">
+          Click to place the end point.
+        </div>
+        <div id="makeFractal4" class="submenu">
+          <label>Points:<input type="number" id="mFracPoints" value="12" /></label>
+          <input type="button" value="Make Fractal" class="defaultAction" id="btnMakeFractal" />
+
+        </div>
+
       </div>
     </div>
     <div id="svgContainer">
