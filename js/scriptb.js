@@ -1,6 +1,8 @@
 /* global variables */
 
 
+
+
 var svg, svgNS;
 var svgHeight = 600;
 var svgWidth = 800;
@@ -180,7 +182,7 @@ function addCircle(g) {
     return  g.circle({
         cx: 0,
         cy: 0,
-        r: 10
+        r: 0
     });
 }
 var fracGroup;
@@ -190,8 +192,12 @@ function beginFractal() {
     showMenu("makeFractal");
     fracPoints=[];
     fracGroup = svg.makeGroup();
+    var c1 = addCircle(fracGroup);
+    fracPoints.push(c1);
+    console.log(c1);
     c = addCircle(fracGroup);
     fracPoints.push(c);
+    console.log(c);
     setMode("frac1");
     setStatus("Set first point.");
 }
@@ -309,12 +315,12 @@ $(document).on('click', svg, function(e) {
         case "frac3":
             showMenu("makeFractal4");
             var pat=fracGroup.path();
-            var Ax=fracPoints[0].getAttribute("cx");
-            var Ay=fracPoints[0].getAttribute("cy");
-            var Bx=fracPoints[1].getAttribute("cx");
-            var By=fracPoints[1].getAttribute("cy");
-            var Cx=fracPoints[2].getAttribute("cx");
-            var Cy=fracPoints[2].getAttribute("cy");
+            var Ax=fracPoints[1].getAttribute("cx");
+            var Ay=fracPoints[1].getAttribute("cy");
+            var Bx=fracPoints[2].getAttribute("cx");
+            var By=fracPoints[2].getAttribute("cy");
+            var Cx=fracPoints[3].getAttribute("cx");
+            var Cy=fracPoints[3].getAttribute("cy");
             var params="M {0} {1} Q {2} {3}  {4} {5} z".format(Ax, Ay, Bx, By, Cx, Cy);
             // console.log(params);
             pat.setPath(params);
@@ -988,20 +994,30 @@ $(document).on('click', '#btnDrawMCurves', function() {
     $.fn.makeFractal2 = function(options) {
     }
     $.fn.makeFractal = function(options) {
-        ar=options.ar;
-        level=options.level;
-        n=options.p;
+        var ar=options.ar;
+        var level=options.level;
+        var n=options.p;
 
+        console.log(level);
+        if (level<=2) return;
+        
+        var X0=parseFloat(ar[0].getAttribute("cx"));
+        var Y0=parseFloat(ar[0].getAttribute("cy"));
+        var X1=parseFloat(ar[1].getAttribute("cx"));
+        var Y1=parseFloat(ar[1].getAttribute("cy"));
+        var X2=parseFloat(ar[2].getAttribute("cx"));
+        var Y2=parseFloat(ar[2].getAttribute("cy"));
+        var X3=parseFloat(ar[3].getAttribute("cx"));
+        var Y3=parseFloat(ar[3].getAttribute("cy"));
 
-        var X1=ar[0].getAttribute("cx");
-        var Y1=ar[0].getAttribute("cy");
-        var X2=ar[1].getAttribute("cx");
-        var Y2=ar[1].getAttribute("cy");
-        var X3=ar[2].getAttribute("cx");
-        var Y3=ar[2].getAttribute("cy");
-        var rad1 = distancebetween(0,0,X1,Y1);
-        var rad2 = distancebetween(0,0,X2,Y2);
-        var rad3 = distancebetween(0,0,X3,Y3);
+        // console.log("COORS");
+        // console.log(Math.floor(X0), Math.floor(Y0), 
+        //     Math.floor(X1), Math.floor(Y1),
+        //     Math.floor(X2), Math.floor(Y2),
+        //     Math.floor(X3), Math.floor(Y3));
+        var rad1 = distancebetween(X0,Y0,X1,Y1);
+        var rad2 = distancebetween(X0,Y0,X2,Y2);
+        var rad3 = distancebetween(X0,Y0,X3,Y3);
 
         var angr1 = Math.atan2(Y1, X1);
         var angr2 = Math.atan2(Y2, X2);
@@ -1019,34 +1035,132 @@ $(document).on('click', '#btnDrawMCurves', function() {
 
         var p, p2, ar, d;
         p2 = Math.PI * 2;
-        ar = [];
+        
         var g = this.makeGroup();
 
 
         // console.log("((((");
         // for (var i=0;i<=p2*1.05;i+=p2/n) {
+        var d0=distancebetween(X0, Y0, X1, Y1);
+        var d1=distancebetween(X1, Y1, X3, Y3);
+        var d2=distancebetween(X0, Y0, X2, Y2);
+        var d3=distancebetween(X0, Y0, X3, Y3);
+
+        var ra=d1/d0;
+        var r1=d1;
+        var r2=d2;
+        var r3=d3;
+
+
         for (var i = 0; i < n; i++) {
+            console.log("I" + i);
             //d=i+p2/offset/n;
             d = (i / n) * p2 ;
 
             var x1, y1, x2, y2, x3, y3;
-            x1=Math.cos(angr1 + d) * rad1 ;
-            y1=Math.sin(angr1 + d) * rad1 ;
-            x2=Math.cos(angr2 + d) * rad2 ;
-            y2=Math.sin(angr2 + d) * rad2 ;
-            x3=Math.cos(angr3 + d) * rad3 ;
-            y3=Math.sin(angr3 + d) * rad3 ;
+            x1=Math.cos(angr1 + d) * rad1 + X0 ;
+            y1=Math.sin(angr1 + d) * rad1 + Y0 ;
+            x2=Math.cos(angr2 + d) * rad2 + X0 ;
+            y2=Math.sin(angr2 + d) * rad2 + Y0 ;
+            x3=Math.cos(angr3 + d) * rad3 + X0 ;
+            y3=Math.sin(angr3 + d) * rad3 + Y0 ;
 
             var pa=g.path();
             var params="M {0} {1} Q {2} {3} {4} {5} z".format(x1, y1, x2, y2, x3, y3);
-            console.log(params);
+            // console.log(params);
             pa.setPath(params) ;
 
-         
-            // // // console.log(x,y);
+
+
+        // var d1=distancebetween(X1, Y1, X2, Y2);
+        // var d2=distancebetween(X3, Y3, X1, Y1);
+        // var d3=distancebetween(X3, Y3, X1, Y1);
+
+        var mx1=Math.cos(angr1) * r1 + x1;
+        var my1=Math.sin(angr1) * r1 + y1;
+        var mx2=Math.cos(angr2) * ra * r2 + x2;
+        var my2=Math.sin(angr2) * ra * r2 + y2;
+        var mx3=Math.cos(angr3) * ra * r3 + x3;
+        var my3=Math.sin(angr3) * ra * r3 + y3;
+
+        // g.text({x:100,y:100,txt:"10",css:"texthelper2"});
+        // g.text({x:mx1+10,y:my1+10,txt:"t1",css:"texthelper2"});
+        // g.text({x:mx2+10,y:my2+10,txt:"t2",css:"texthelper2"});
+        // g.text({x:mx3+10,y:my3+10,txt:"t3",css:"texthelper2"});
+
+        // console.log("%%");
+        // console.log(ra.toFixed(10), r1.toFixed(3), r2.toFixed(3), r3.toFixed(3));
+        // console.log(d0.toFixed(3), d1.toFixed(3), d2.toFixed(3), d3.toFixed(3));
+        // console.log(angr1.toFixed(3));
+        // console.log(mx1.toFixed(3), 
+        //     my1.toFixed(3), 
+        //     mx2.toFixed(3), 
+        //     my2.toFixed(3), 
+        //     mx3.toFixed(3), 
+        //     my3.toFixed(3));
+
+        var ar2=[];
+        var c=g.circle(
+            {
+                cx: x3,
+                cy: y3,
+                r: 0,
+                css: "helper2"
+            }
+            );
+        ar2.push(c);
+
+        var c=g.circle(
+            {
+                cx: mx1,
+                cy: my1,
+                r: 0,
+                css: "helper2"
+            }
+            );
+        ar2.push(c);
+        var c=g.circle(            {
+                cx: mx2,
+                cy: my2,
+                r: 0,
+                css: "helper2"
+            }
+            );
+
+        ar2.push(c);
+        var c=g.circle(            {
+                cx: mx3,
+                cy: my3,
+                r: 0,
+                css: "helper2"
+            }
+            );
+
+        ar2.push(c);
+
+        var l2=level-1;
+        console.log("Level " , level , " L2 " , l2);
+       svg.makeFractal({
+        ar:ar2,
+        level:l2,
+        p:n
+
+        });
+
+
         }
         g.attr("pointindex", arPoints.length);
         arPoints.push(ar);
+
+      
+         
+            // // // console.log(x,y);
+
+              // create the next group
+        // console.log("%%%%%%")
+        // console.log(ar2);
+
+       
 
         // line(x1,y1,x2,y2,css,opacity);
         return this;
@@ -1153,11 +1267,8 @@ $(document).on('click', '#btnDrawMCurves', function() {
 
 
     $.fn.text = function(options) {
-    
-    
-
     x=options.x;
-    y=options.y;
+    y=options.y *-1;
     css=options.css;
     txt=options.txt;
     var t = document.createElementNS(svgNS, 'text'); //Create a path in SVG's namespace

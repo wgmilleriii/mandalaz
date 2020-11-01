@@ -226,6 +226,13 @@ pre.prettyprint {
     fill:none;
     stroke:none;
 }
+.helper2 {
+    fill:blue;
+    stroke:red;
+}
+.texthelper2 { 
+    fill:red;
+ }
 .highlighted circle {
     stroke: white;
     fill: yellow;
