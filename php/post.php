@@ -281,7 +281,7 @@ function community() {
 	$sql=sprintf($sql, $userid, $userid, $userid);
 	$result=dosql($sql);
 
-	echo $sql;
+	// echo $sql;
 	while($row = mysqli_fetch_array($result)) { 
 		$s="<script>addComMandala('%s','%s','%s',%s, %s, %s); </script>";
 
@@ -314,12 +314,13 @@ mandalaCreated('<? echo $name ?>');
 
 
 function create() {
-	$username=safe($_GET["username"]);
-	$password=safe($_GET["password"]);
-	$fullname=safe($_GET["fullname"]);
+	$username=safe($_POST["username"]);
+	$password=safe($_POST["password"]);
+	$fullname=safe($_POST["fullname"]);
 
 	$sql="select * from users where username='%s'";
-	$sql=sprintf($sql, $username, $password);
+	$sql=sprintf($sql, $username);
+	echo $sql;
 	$result=dosql($sql);
 	$userid=0;
 
