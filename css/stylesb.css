@@ -5,131 +5,148 @@ body {
 * {
     font-family: Times;
     color: lightblue;
-    font-size:13px;
+    font-size: 13px;
 }
 
-input,select {
+input, select {
     background-color: #222;
-    border:1px solid #555;
-    padding:2px 10px;
-    font-size:13px;
+    border: 1px solid #555;
+    padding: 2px 10px;
+    font-size: 13px;
 }
+
 input[type="text"] {
-    width:3em;
+    width: 3em;
 }
+
 label {
-    font-size:12px;
+    font-size: 12px;
 }
+
 label input {
-    margin-left:5px;
-    margin-right:10px;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 label.stroke input {
     background-color: #777;
+}
 
-}
 #history {
-    width:200px;
-    position:absolute;
-    top:30px;
-    right:10px;
-    border:1px solid #555;
-    background-color: rgba(0,0,0,.8);
-    z-index:999;
+    width: 200px;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    border: 1px solid #555;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 999;
     text-indent: -20px;
-    padding-left:30px;
+    padding-left: 30px;
+    overflow: scroll;
+    height:480px;
+    display:none;
 }
+
 #history p {
     font-family: Courier;
-    color:lightblue;
-    
+    color: lightblue;
 }
-g {
-    stroke: white;
-    fill: white;
-    fill-opacity: .2;
-}
+
+
 input[type="number"] {
-    width:3em;
+    width: 3em;
 }
+
 .submenu {
     vertical-align: middle;
     display: table-cell;
 }
-.svgCont { 
-  vertical-align: middle;
-    display:inline-block; 
-  }
-.svgCont svg { 
-margin:0px 0px 2px;
-padding:0px;
 
+.svgCont {
+    vertical-align: middle;
+    display: inline-block;
 }
+
+.svgCont svg {
+    margin: 0px 0px 2px;
+    padding: 0px;
+}
+
 .default:hover {
     stroke: white;
     fill: white;
     fill-opacity: .8;
 }
 
-.sample { 
-    display:inline-block;
-    margin-left:20px;
-    padding:3px;
+.sample {
+    display: inline-block;
+    margin-left: 20px;
+    padding: 3px;
 }
+
 .stroke_red {
-    border:1px solid red;
-    color:red;
-    stroke:red;
+    border: 1px solid red;
+    color: red;
+    stroke: red;
 }
+
 .stroke_none {
-    border:0px solid red;
-    color:#CCC;
-    stroke:none;
+    border: 0px solid red;
+    color: #CCC;
+    stroke: none;
 }
+
 .stroke_blue {
-    border:1px solid blue;
-    color:blue;
-    stroke:blue;
+    border: 1px solid blue;
+    color: blue;
+    stroke: blue;
 }
+
 .stroke_yellow {
-    border:1px solid yellow;
-    color:yellow;
-    stroke:yellow;
+    border: 1px solid yellow;
+    color: yellow;
+    stroke: yellow;
 }
 
 label.fill input {
-    border:1px solid #CCC;    
-    color:#777;
+    border: 1px solid #CCC;
+    color: #777;
 }
+
 .fill_none {
-    background-color: rgba(0,0,0,0);
-    fill:none;
+    background-color: rgba(0, 0, 0, 0);
+    fill: none;
 }
 
 .fill_red {
     background-color: red;
-    fill:red;
-}
-.fill_blue {
- background-color: blue;
- fill:blue;
-}
-.fill_yellow {
-    background-color: yellow;
-    fill:yellow;
+    fill: red;
+    fill-opacity: 1;
 }
 
-.defaultAction { 
-    border-left:2px solid #999;
-    border-top:2px solid #999;
-    margin-left:40px;
+.fill_blue {
+    background-color: blue;
+    fill: blue;
+    fill-opacity: 1;
 }
+
+.fill_yellow {
+    background-color: yellow;
+    fill: yellow;
+    fill-opacity: 1;
+}
+
+.defaultAction {
+    border-left: 2px solid #999;
+    border-top: 2px solid #999;
+    margin-left: 40px;
+}
+
 #menuOptions {
     background-color: rgba(255, 255, 255, .1);
     padding: 2px 10px;
     position: relative;
-    height:30px;
+    height: 30px;
 }
 
 #menuOptionsList {
@@ -138,23 +155,31 @@ label.fill input {
     left: 20px;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-
-    }
-.defaultAction {
-    
 }
+
+.defaultAction {
+}
+
 #menuOptionsList div {
     float: left;
     padding: 2px 10px;
-    margin:2px;
+    margin: 2px;
     border: 1px solid rgba(255, 255, 255, .2);
     cursor: pointer;
 }
+
 #menuOptionsList div:hover {
-    background-color:  rgba(255, 255, 255, .2);
-} 
+    background-color: rgba(255, 255, 255, .2);
+}
+
 span.underline {
     text-decoration: underline;
+}
+
+#backker {
+    right: 80px;
+    position: absolute;
+
 }
 #status, #mode {
     right: 10px;
@@ -209,12 +234,11 @@ pre.prettyprint {
     border-left: 1px solid #888 !important;
 }
 
-
 .grouped {
     stroke: white;
     fill: white;
     fill-opacity: .2;
-       stroke-opacity: .2;
+    stroke-opacity: .2;
 }
 
 .grouped:hover {
@@ -222,25 +246,30 @@ pre.prettyprint {
     fill: white;
     fill-opacity: .8;
 }
+
 .helper {
-    fill:none;
-    stroke:none;
+    fill: none;
+    stroke: none;
 }
+
 .helper2 {
-    fill:blue;
-    stroke:red;
+    fill: blue;
+    stroke: red;
 }
-.texthelper2 { 
-    fill:red;
- }
+
+.texthelper2 {
+    fill: red;
+}
+
 .highlighted circle {
     stroke: white;
     fill: yellow;
     fill-opacity: .5;
 }
+
 .highlighted line {
-    stroke-width:3;
-    stroke:white !important;    
+    stroke-width: 3;
+    stroke: white !important;
 }
 
 .light1 {
@@ -257,44 +286,6 @@ pre.prettyprint {
     stroke-width: 1;
     stroke: #DDD;
     fill: none;
-}
-
-.yellow {
-    stroke: yellow;
-    fill: none;
-}
-
-.black {
-    stroke: #333;
-}
-
-.black_solid {
-    stroke: #333;
-    fill: #000;
-}
-
-.white_none {
-    stroke: white;
-    fill: white;
-}
-
-.red {
-    stroke: red;
-    fill: none;
-}
-
-.blue {
-    stroke: blue;
-    fill: none;
-}
-
-.red_solid {
-    stroke: red;
-    fill: pink;
-}
-
-.yellow {
-    stroke: yellow;
 }
 
 #svg1 {
@@ -317,23 +308,25 @@ pre.prettyprint {
     zoom: 1;
 }
 
-.green {
-    fill: red;
-    stroke: green;
+#makeClasses label input {
+    min-width: 12px;
+    min-height: 12px;
+    max-width: 12px;
+    max-height:12px;
+    margin-top:7px;
+    padding:0px;
+     
+text-indent: -9999em;
+text-transform: uppercase; 
 }
 
-.text {
-    fill: #AAA;
-    font-size: 10px;
-}
+#btnGoHome { margin-right:20px !important; }
 
-.dark_blue {
-    fill: darkblue;
-}
+#btnMakeUndo { margin-left:20px !important; }
 
-.light_blue {
-    fill: lightblue;
+#btnPublish.published, #btnPublish.published:hover { 
+    background-color:rgba(200,255,200,.8);
+    color:white;
 }
-
 
 

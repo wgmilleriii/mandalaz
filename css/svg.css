@@ -1,0 +1,66 @@
+
+
+#svgb g {
+    stroke: white;
+    fill: white;
+    fill-opacity: .2;
+}
+
+.green {
+    fill: red;
+    stroke: green;
+}
+
+.text {
+    fill: #AAA;
+    font-size: 10px;
+}
+
+.dark_blue {
+    fill: darkblue;
+    
+
+}
+
+.light_blue {
+    fill: lightblue;
+}
+
+.yellow {
+    stroke: yellow;
+    fill: none;
+}
+
+.black {
+    stroke: #333;
+}
+
+.black_solid {
+    stroke: #333;
+    fill: #000;
+}
+
+.white_none {
+    stroke: white;
+    fill: white;
+}
+
+.red {
+    stroke: red;
+    fill: none;
+}
+
+.blue {
+    stroke: blue;
+    fill: none;
+}
+
+.red_solid {
+    stroke: red;
+    fill: pink;
+}
+
+.yellow {
+    stroke: yellow;
+}
+

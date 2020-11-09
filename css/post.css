@@ -1,0 +1,245 @@
+body {
+
+	background-color:darkblue;
+	color:lightgray;
+
+	margin-left:150px;
+	margin-top:100px;
+
+}
+
+#loginUser span {
+	display:block;
+	width:10em;
+	margin-top:40px;
+	margin-bottom:10px;
+	font-size:16px;	
+}
+#createUser span {
+	display:block;
+	width:10em;
+	margin-top:10px;
+	margin-bottom:5px;
+	font-size:16px;	
+}
+
+#loginUser .btnAction {
+	margin-top:40px;
+}
+#createUser .btnAction {
+	margin-top:24px;
+}
+
+
+label span { 
+	width:300px; 
+	display:block;
+}
+div.smaller { 
+	float:left;
+
+}
+div.smaller  label span { 
+	width:200px ;
+}
+div.normal  label span { 
+	width:300px !important ;
+}
+
+span.feedback{ 
+	display:inline-block !important;
+	width:300px !important;
+	margin:10px;
+}
+
+* {
+	box-sizing: border-box;	
+}
+
+
+.btnAction {
+	border-radius:6px;
+	padding:10px;
+	font-size:20px;
+	width:7em;
+}
+
+input { 
+	padding-left:10px;
+	font-size:36px;
+	width:10em;
+}
+
+div.smaller  input { 
+	width:4em ;
+}
+
+input:focus { 
+	background-color:yellow;
+}
+
+input:hover { 
+	background-color:lightblue;
+}
+
+#nav { 
+	border-bottom:1px solid white;
+	padding-left:20px;
+}
+#nav div {
+display:inline-block;	
+}
+.menu { 
+	padding:10px;
+	cursor: pointer;
+	
+	border-top:2px solid  rgba(255,255,255,0); ;
+}
+
+.menu:hover { 
+	border-top:2px solid rgba(255,255,255,.8);
+
+}
+
+.menu.inactive { 
+	background-color:none;
+	color:grey;
+}
+
+.menu.active { 
+	background-color:white;
+	color:black;
+}
+div.normal { 
+clear:both;
+padding-top:5px;
+ }
+
+ #pleaseLogin {
+padding:40px;
+
+ }
+
+ .hidden { diplay:none; }
+
+ #myInfo { 
+ 	margin:40px;
+ 	padding:20px;
+ 	border-left:1px solid rgba(255,255,255,.5);
+ 	line-height: 200%
+ }
+
+ #myMandalas {
+ 	margin:40px;
+ }
+ #myMandalas label span {
+ 	margin-bottom:5px; 
+ }
+ #myMandalas input { 
+	padding-left:10px;
+	padding-right:10px;
+	font-size:16px;
+	width:20em;
+}
+
+#myMandalas .btnAction {
+	margin-top:4px;
+	width:7em;
+	font-size:16px;
+	padding:2px;
+}
+
+a.logout:hover { 
+color:white;
+border-bottom:1px solid white;
+ }
+a.logout { 
+	text-decoration: none;
+	color:rgba(255,255,255,.6);
+	margin-left:10px;
+	margin-right:5px;
+	border-bottom:1px solid rgba(255,255,255,.6);	
+}
+
+#listMandalas {
+	width:400px;
+}
+
+a.launch { 
+color:lightgreen;
+ }
+
+#myTitle { 
+font-size:28px;
+margin-top:20px;
+margin-bottom:10px;
+width:50%;
+color:grey;
+border-bottom:1px solid lightgrey;
+ }
+
+ 
+div.mname { 
+display:inline;
+ }
+
+div.mandala:hover {
+	background-color:rgba(255,255,255,.1);
+	border-bottom:1px solid white;
+}
+ div.mandala {
+ 	width:300px;
+ 	display:block;
+ 	margin:5px;
+ 	padding:4px;
+ 	cursor:pointer;
+	border-bottom:1px solid rgba(255,255,255,0); 	
+ }
+
+ .msubmenu { 
+	display:inline-block;
+ }
+ .svgCont {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.svgCont svg {
+    margin: 0px 0px 2px;
+    padding: 0px;
+}
+
+svg.icon {
+    display: block;
+    margin-left:10px;
+    
+}
+
+div.preview svg {
+    margin: 10px auto;
+    display: block;
+    background-color: #212;
+}
+
+.ishelper, .helper { 
+    display:none;
+ }
+
+ .preview { 
+
+zoom:.2;
+  }
+
+div.heart svg { 
+	filter:saturate(.2);
+}
+
+div.heart.hearted svg { 
+	filter:saturate(1);
+}
+
+.createdby { 
+font-style: italic;
+color:grey;
+font-size:80%;
+}
