@@ -31,7 +31,7 @@ ADD	INDEX `ix_mandala_userid` (userid);
 ALTER TABLE mandala 
 ADD	COLUMN is_published tinyint DEFAULT 0,
 ADD	COLUMN is_trash tinyint DEFAULT 0,
-ADD	COLUMN is_favorite tinyint DEFAULT 0,
+ADD	COLUMN is_favorite tinyint DEFAULT 0;
 
 
 
@@ -58,7 +58,7 @@ CREATE TABLE `mandalaz`.`user_ranking` (
 	 createddt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,	
 	 PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
-ALTER TABLE muser
+ALTER TABLE users
 ADD	COLUMN lastlogin DATETIME,
 ADD	COLUMN createddt TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
