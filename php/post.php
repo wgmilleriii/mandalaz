@@ -276,7 +276,7 @@ function community() {
 	$sql=sprintf($sql, $userid, $userid, $userid);
 	$result=dosql($sql);
 
-	echo $sql;
+	// echo $sql;
 	while($row = mysqli_fetch_array($result)) { 
 		$s="<script>addComMandala('%s','%s','%s',%s, %s, %s); </script>";
 
