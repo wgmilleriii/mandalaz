@@ -1,4 +1,3 @@
-
 CREATE TABLE `mandalaz`.`users` (
 	`userid` INT NOT NULL AUTO_INCREMENT ,
 	`username` VARCHAR(50) NOT NULL ,

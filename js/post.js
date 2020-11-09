@@ -1,4 +1,7 @@
 var urlPrefix = "http://localhost:8888/mandalaz/php/";
+
+var urlPrefix = "php/";
+
 var lm;
 var com;
 

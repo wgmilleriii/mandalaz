@@ -13,6 +13,11 @@ $password="root";
 $db="mandalaz";
 $port=3306;
 
+if ($_SERVER["SERVER_NAME"]=="piano.interlochen.org") {
+$user="mandalaz";
+$password="mandalaz11!!";
+
+}
 @ $exists = mysqli_real_connect(
    $link, 
    $host, 
