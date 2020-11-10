@@ -1685,7 +1685,7 @@ if (!String.prototype.format) {
 }
 
 var urlPrefix = "http://localhost:8888/mandalaz/php/";
-
+var urlPrefix = "php/";
 function cs(s) {
     console.log("-= Posting: =- ");
     console.log(urlPrefix + s);
