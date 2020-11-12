@@ -188,7 +188,7 @@ div.mandala:hover {
 	border-bottom:1px solid white;
 }
  div.mandala {
- 	width:300px;
+ 	width:450px;
  	display:block;
  	margin:5px;
  	padding:4px;
@@ -231,7 +231,7 @@ div.preview svg {
 
  .preview { 
 
-zoom:.2;
+zoom:.4;
   }
 
 div.heart svg { 

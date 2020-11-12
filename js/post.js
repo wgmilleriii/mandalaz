@@ -98,13 +98,14 @@ $(document).on('click', '.inactive', function() {
 
 var mandalaid=0;
 $(document).on('click', '.mandala', function() {
+
     mandalaid = $(this).find(".mname").attr("mandalaid");
     $(".msubmenu").remove();
 
     var s='<div class=cl></div><div class=msubmenu><label><input type="checkbox" class=launch>Launch</label><label><input type="checkbox" class=heart>Heart</label><label><input type="checkbox" class=trash>Reverse</label></div>';
 
     if ($(this).hasClass("community")) {
-        s='<div class=cl></div><div class=msubmenu><label><input type="checkbox" class=heart>Heart</label></div>';
+        s='<div class=cl></div><div class=msubmenu><label><input type="checkbox" class=heart>Heart</label><label><input type="checkbox" class=print>Print</label></div>';
     }
     $(this).append(s);
     makeSVGs();
@@ -475,6 +476,19 @@ $(document).on('click', '#btnCommunity', function(e) {
             $("#scriptResults").html(data);
             // console.log(data);
         });
+
+});
+
+$(document).on('click', '.print', function(e) {
+
+    var myWindow = window.open("print.php","newWindow","width=800,height=800");  
+
+   myWindow.onload = function(){
+    var content=$("div.preview[mandalaid=" + mandalaid + "]").html();
+   myWindow.document.getElementById('print').innerHTML = content;
+    } 
+
+myWindow.window.close();
 
 });
 
