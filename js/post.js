@@ -101,10 +101,10 @@ $(document).on('click', '.mandala', function() {
     mandalaid = $(this).find(".mname").attr("mandalaid");
     $(".msubmenu").remove();
 
-    var s='<div class=msubmenu><label><input type="checkbox" class=launch>Launch</label><label><input type="checkbox" class=heart>Heart</label><label><input type="checkbox" class=trash>Reverse</label></div>';
+    var s='<div class=cl></div><div class=msubmenu><label><input type="checkbox" class=launch>Launch</label><label><input type="checkbox" class=heart>Heart</label><label><input type="checkbox" class=trash>Reverse</label></div>';
 
     if ($(this).hasClass("community")) {
-        s='<div class=msubmenu><label><input type="checkbox" class=heart>Heart</label></div>';
+        s='<div class=cl></div><div class=msubmenu><label><input type="checkbox" class=heart>Heart</label></div>';
     }
     $(this).append(s);
     makeSVGs();
@@ -140,6 +140,40 @@ function loginn() {
             $("#scriptResults").html(data);
         });
 
+}
+
+$(document).on('click', "label.full",function(){
+  var fr=$(this).attr("for");
+  fr=$(this).parent().find("." + fr);
+  var ranking=fr.attr("value");
+  var me=$(this);
+
+  var mandalaid=$(this).closest(".mandala").attr("mandalaid");
+  //.attr("mandalaid");
+    
+    var url = "post.php?action=rate";
+    url = cs(url);
+
+    $.post(url, 
+    {
+        mandalaid:mandalaid,
+        ranking:ranking
+    })
+
+.done(function(data) {
+    $("#scriptResults").html(data);
+    console.log(data);
+  me.parent().find("label").css({"background-color": "#D8D8D8"});
+  me.css({"background-color": "#7ED321"});
+  me.nextAll().css({"background-color": "#7ED321"});
+
+});  
+});
+
+function highlightstar(me) {
+  me.parent().find("label").css({"background-color": "#D8D8D8"});
+  me.css({"background-color": "#7ED321"});
+  me.nextAll().css({"background-color": "#7ED321"});
 }
 $(document).on('click', '#btnLogin', function() {
     loginn();
@@ -197,11 +231,12 @@ function listMyMandalas() {
     $.post(url)
         .done(function(data) {
             $("#scriptResults").html(data);
-            // console.log(data);
+            
         });
 }
 // ($s,$row["mname"],$row["createddt"],$row["fullname"],$row["mandalaid"],$row["favid"],$row["ranking"]);
-function addComMandala(mn, cdt, fn, id, is_favorite, ranking) {
+function addComMandala(mn, cdt, fn, id, is_favorite, 
+    ranking, cnt, avg_ranking) {
 
     // var m2 = document.createElement( "div" ), 
     // m2.setAttribute("class","mname");
@@ -211,23 +246,30 @@ function addComMandala(mn, cdt, fn, id, is_favorite, ranking) {
         css=" hearted";
     }
 
-    var s = "<div mandalaid={1} class='mname {2}'>{0}</div><div class=createdby>By {3} - {4}</div>";
-    s = s.format(mn, id, css, fn, cdt);
-    // console.log(s);
-
+    var s = "<div mandalaid={1} class='mname {2}'>{0}</div>";
+    s = s.format(mn, id, css);
     var m = document.createElement("div");
     m.setAttribute("class", "mandala community");
     m.setAttribute("mandalaid", id);
     m = $(m);
-    m.html(s);
+    m.append(s);
+
+    s="<div class=createdby>By {0} - {1}</div>";
+    s = s.format(fn, cdt);
+    m.append(s);
+    var s="<div class=ratings>{0} avg of {1} ratings</div>";
+     s = s.format(avg_ranking, cnt);
+     m.append(s);
 
     com.append(m);
 
-    var t=$("div[mandalaid=" + id + "]");
+    var t=$("div.preview[mandalaid=" + id + "]");
+    m.append(t);
+    var t=$("div.rating[mandalaid=" + id + "]");
     m.append(t);
 
 }
-function addMandala(mn, id, is_favorite) {
+function addMandala(mn, id, is_favorite, dt, cnt, avg_ranking) {
 
 
     // var m2 = document.createElement( "div" ), 
@@ -238,8 +280,8 @@ function addMandala(mn, id, is_favorite) {
         css=" hearted";
     }
 
-    var s = "<div mandalaid={1} class='mname {2}'>{0}</div>";
-    s = s.format(mn, id, css);
+    var s = "<div mandalaid={1} class='mname {2}'>{0}<div class=createdby>{3}</div></div>";
+    s = s.format(mn, id, css, dt);
     // console.log(s);
 
     var m = document.createElement("div");
@@ -248,9 +290,17 @@ function addMandala(mn, id, is_favorite) {
     m = $(m);
     m.html(s);
 
+    var s="<div class=ratings>{0} avg of {1} ratings</div>";
+     s = s.format(avg_ranking, cnt);
+     m.append(s);
+
+
     lm.append(m);
 
-    var t=$("div[mandalaid=" + id + "]");
+
+    var t=$("div.preview[mandalaid=" + id + "]");
+    m.append(t);
+    var t=$("div.rating[mandalaid=" + id + "]");
     m.append(t);
 
 }
@@ -456,3 +506,4 @@ function makeHeart(mn, hearted) {
         }
     }
 }
+

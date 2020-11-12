@@ -11,6 +11,8 @@ $r=rand()*100000;
 		<script src="js/svgs.js?r=<? echo $r ?>"></script>
 		<script src="js/post.js?r=<? echo $r ?>"></script>
 
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
 	</head>
 	<body>
           

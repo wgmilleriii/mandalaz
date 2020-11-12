@@ -194,10 +194,13 @@ div.mandala:hover {
  	padding:4px;
  	cursor:pointer;
 	border-bottom:1px solid rgba(255,255,255,0); 	
+	clear:both;
+	margin-bottom:22px;
  }
 
  .msubmenu { 
 	display:inline-block;
+	clear:both;
  }
  .svgCont {
     vertical-align: middle;
@@ -219,6 +222,7 @@ div.preview svg {
     margin: 10px auto;
     display: block;
     background-color: #212;
+    clear:both;
 }
 
 .ishelper, .helper { 
@@ -242,4 +246,56 @@ div.heart.hearted svg {
 font-style: italic;
 color:grey;
 font-size:80%;
+}
+
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+.rating { 
+  border: none;
+  float: left;
+  margin:0px 0px 0px 28px;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin-top: 2px;
+  padding:0px 5px 0px 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+	color: #fff; 
+	float: right;
+	margin:4px 1px 0px 0px;
+	background-color:#D8D8D8;
+	border-radius:15px;
+  height:25px;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { 
+	background-color:#7ED321 !important;
+  cursor:pointer;
+} /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { 
+	background-color:#7ED321 !important;
+  cursor:pointer;
+} 
+
+.cl {
+
+	clear:both;
 }
