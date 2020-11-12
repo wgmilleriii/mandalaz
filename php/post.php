@@ -160,7 +160,7 @@ function rate() {
 
 	$sql="insert into user_ranking (mandalaid, userid, ranking) values (%s, %s, %s)";
 	$sql=sprintf($sql, $mandalaid, $userid, $ranking);
-	echo $sql;
+	// echo $sql;
 	$result=dosql($sql);
 	if ($result>0) {
 		// echo 1;
