@@ -15,7 +15,7 @@ $r=rand()*100000;
 
 	</head>
 	<body>
-          
+         <div id="nonprint">
           
           
 
@@ -27,9 +27,9 @@ $r=rand()*100000;
 			<div class="mymenu menu inactive" nav="community" id="btnCommunity">Community</div>
 
 			<div style="position:absolute; top:-30px; right:0px">
-<span id="message3">
-	
-</span>
+			<span id="message3">
+				
+			</span>
 			</div>
 		</div>
 
@@ -64,7 +64,7 @@ $r=rand()*100000;
 			</div>
 		</div>
 
-	<div id="myAccount">
+		<div id="myAccount">
 
 			<div id="myInfo">
 Last logged in: Yesterday<BR>
@@ -75,7 +75,7 @@ Average rating: 4.5<BR>
 			</div>
 		</div>
 
-	<div id="myMandalas">
+		<div id="myMandalas">
 			<div id="newMandala">
 				<label><span>New Mandala</span><input value="" placeholder="New Mandala Name" type="text" id="mandalaname" /></label>
 
@@ -89,10 +89,15 @@ Average rating: 4.5<BR>
 			<div id="listMandalas">123</div>
 		</div>
 
-	<div id="community">
-loading...
-	</div>
+		<div id="community">
+			loading...
+		</div>
 		<div id="scriptResults">
 		</div>
+
+	</div>
+		<div id="printable">
+		</div>
+
 	</body>
 </html>

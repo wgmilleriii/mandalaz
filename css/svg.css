@@ -64,3 +64,42 @@
     stroke: yellow;
 }
 
+g.fill_none > * {
+    background-color: rgba(0, 0, 0, 0);
+    fill: none;
+}
+
+g.fill_red > * {
+    background-color: red;
+    fill: red;
+    fill-opacity: 1;
+}
+
+g.fill_blue > * {
+    background-color: blue;
+    fill: blue;
+    fill-opacity: 1;
+}
+
+g.fill_yellow > * {
+    background-color: yellow;
+    fill: yellow;
+    fill-opacity: 1;
+}
+g.stroke_red > * {
+    border: 1px solid red;
+    color: red;
+    stroke: red;
+}
+
+g.stroke_none > * {
+    border: 0px solid red;
+    color: #CCC;
+    stroke: none;
+}
+
+g.stroke_blue > * {
+    border: 1px solid blue;
+    color: blue;
+    stroke: blue;
+}

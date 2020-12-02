@@ -1125,7 +1125,7 @@ $(document).on('click', '#btnDrawMCurves', function() {
 
     $.fn.path = function(options = {}) {
         var settings = {
-            css: "default",
+            css: "",
             ar: []
         };
 

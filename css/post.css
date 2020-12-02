@@ -1,3 +1,6 @@
+@media screen
+{
+
 body {
 
 	background-color:darkblue;
@@ -298,4 +301,31 @@ font-size:80%;
 .cl {
 
 	clear:both;
+}
+
+#printable { display:none; }
+
+}
+
+@media print {
+
+#nonprint { 
+display:none;
+ }
+
+
+
+
+}
+
+
+div#printable svg   > g {
+    stroke: black !important;
+    fill: black;
+    fill-opacity: 1;
+}
+div#printable svg { 
+    margin:10px;
+    background-color:#FFF !important;;
+
 }
